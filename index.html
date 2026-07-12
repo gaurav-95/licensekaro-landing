@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LicenseKaro — আপনার কোনো লাইসেন্সের মেয়াদ আর কখনো শেষ হবে না</title>
+<meta name="description" content="পশ্চিমবঙ্গের ব্যবসায়ীদের জন্য ফ্রি লাইসেন্স ট্র্যাকার। ট্রেড লাইসেন্স, FSSAI, GST — সব এক অ্যাপে। মেয়াদ শেষের আগে WhatsApp-এ রিমাইন্ডার।" />
+<style>
+  /* ============ CONFIG: replace these before publishing ============ */
+  :root {
+    --green: #0B6E4F;
+    --green-dark: #08563d;
+    --amber: #F2A93B;
+    --bg: #FAFAF7;
+    --surface: #FFFFFF;
+    --text: #1D1D1B;
+    --text-2: #5A5A55;
+    --border: #E5E5DF;
+    --red: #C0392B;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans Bengali', 'Hind Siliguri', system-ui, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.65;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+  a { color: var(--green); }
+
+  header {
+    background: var(--surface); border-bottom: 1px solid var(--border);
+    padding: 14px 0; position: sticky; top: 0; z-index: 10;
+  }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; }
+  .logo { font-size: 22px; font-weight: 800; color: var(--green); text-decoration: none; }
+  .logo span { color: var(--amber); }
+  .nav-cta {
+    background: var(--green); color: #fff; text-decoration: none;
+    padding: 8px 18px; border-radius: 999px; font-weight: 700; font-size: 14px;
+  }
+
+  .hero { padding: 56px 0 40px; text-align: center; }
+  .hero h1 { font-size: clamp(26px, 5vw, 40px); font-weight: 800; line-height: 1.3; }
+  .hero h1 em { color: var(--green); font-style: normal; }
+  .hero p.sub { margin: 16px auto 0; max-width: 560px; font-size: 17px; color: var(--text-2); }
+  .hero-badges { margin-top: 14px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  .badge {
+    background: #E8F3EE; color: var(--green); font-size: 13px; font-weight: 700;
+    padding: 4px 12px; border-radius: 999px;
+  }
+  .hero-cta { margin-top: 28px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 14px 28px; border-radius: 12px;
+    font-weight: 800; font-size: 16px; text-decoration: none;
+  }
+  .btn-primary { background: var(--green); color: #fff; }
+  .btn-primary:hover { background: var(--green-dark); }
+  .btn-outline { border: 2px solid var(--green); color: var(--green); background: transparent; }
+  .hero-img {
+    margin: 40px auto 0; max-width: 720px; width: 100%;
+    border-radius: 16px; border: 1px solid var(--border); display: block;
+  }
+  .img-placeholder {
+    background: #ECECEC; border: 2px dashed #bbb; border-radius: 16px;
+    color: #888; font-size: 14px; display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 20px;
+  }
+
+  section { padding: 48px 0; }
+  section.alt { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  h2 { font-size: clamp(22px, 4vw, 30px); font-weight: 800; text-align: center; margin-bottom: 8px; }
+  .section-sub { text-align: center; color: var(--text-2); max-width: 560px; margin: 0 auto 32px; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+    padding: 22px;
+  }
+  section.alt .card { background: var(--bg); }
+  .card .icon { font-size: 30px; }
+  .card h3 { font-size: 17px; margin: 10px 0 6px; }
+  .card p { font-size: 14px; color: var(--text-2); }
+
+  .steps { max-width: 620px; margin: 0 auto; counter-reset: step; }
+  .step {
+    display: flex; gap: 16px; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; padding: 18px; margin-bottom: 12px; align-items: flex-start;
+  }
+  .step .num {
+    counter-increment: step; flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%;
+    background: var(--green); color: #fff; font-weight: 800; display: flex;
+    align-items: center; justify-content: center;
+  }
+  .step .num::before { content: counter(step); }
+  .step h4 { font-size: 16px; }
+  .step p { font-size: 14px; color: var(--text-2); margin-top: 2px; }
+  .note {
+    max-width: 620px; margin: 16px auto 0; background: #FDF3E2; border: 1px solid #F2A93B55;
+    border-radius: 12px; padding: 14px 18px; font-size: 14px; color: #7a5410;
+  }
+
+  .service-box {
+    max-width: 620px; margin: 0 auto; background: var(--green); color: #fff;
+    border-radius: 20px; padding: 32px; text-align: center;
+  }
+  .service-box h2 { color: #fff; }
+  .service-box .price { font-size: 34px; font-weight: 800; color: var(--amber); margin: 10px 0; }
+  .service-box p { opacity: .92; font-size: 15px; }
+  .service-box .btn { background: #fff; color: var(--green); margin-top: 18px; }
+
+  .founder {
+    max-width: 620px; margin: 0 auto; display: flex; gap: 20px; align-items: center;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 26px;
+  }
+  .founder img, .founder .img-placeholder { width: 96px; height: 96px; border-radius: 50%; flex-shrink: 0; }
+  .founder h3 { font-size: 18px; }
+  .founder p { font-size: 14px; color: var(--text-2); margin-top: 4px; }
+
+  .privacy { max-width: 680px; margin: 0 auto; font-size: 14px; color: var(--text-2); }
+  .privacy h3 { color: var(--text); font-size: 16px; margin: 18px 0 6px; }
+  .privacy ul { padding-left: 20px; }
+
+  footer {
+    background: var(--text); color: #ccc; padding: 28px 0; text-align: center; font-size: 13px;
+  }
+  footer a { color: var(--amber); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#">License<span>Karo</span></a>
+    <!-- TODO(founder): replace with real WhatsApp Business number -->
+    <a class="nav-cta" href="https://wa.me/919876543210">WhatsApp-এ কথা বলুন</a>
+  </div>
+</header>
+
+<section class="hero wrap">
+  <h1>আপনার কোনো লাইসেন্সের মেয়াদ<br /><em>আর কখনো শেষ হবে না।</em></h1>
+  <p class="sub">
+    ট্রেড লাইসেন্স, FSSAI, GST, ফায়ার সার্টিফিকেট — পশ্চিমবঙ্গের ব্যবসার সব লাইসেন্স
+    এক অ্যাপে। মেয়াদ শেষের আগে ফোনে আর WhatsApp-এ রিমাইন্ডার। <strong>সম্পূর্ণ ফ্রি।</strong>
+  </p>
+  <div class="hero-badges">
+    <span class="badge">✓ ১০০% বাংলায়</span>
+    <span class="badge">✓ ফ্রি রিমাইন্ডার</span>
+    <span class="badge">✓ ডকুমেন্ট ভল্ট</span>
+  </div>
+  <div class="hero-cta">
+    <!-- APK ships in the same deploy repo (gaurav-95/licensekaro-landing); replace the file + push to update. -->
+    <a class="btn btn-primary" href="./LicenseKaro.apk" id="apk-download" download>📲 অ্যাপ ডাউনলোড করুন (ফ্রি)</a>
+    <a class="btn btn-outline" href="#service">রিনিউ সার্ভিস দেখুন</a>
+  </div>
+  <!-- IMAGE SLOT: hero-screens.png — 3 phone screenshots side by side (dashboard / detail / documents).
+       Export at 1440×800. See landing/GEMINI_PROMPTS.md for the frame illustration prompt. -->
+  <div class="img-placeholder hero-img" style="height:320px">
+    hero-screens.png — ড্যাশবোর্ড + লাইসেন্স + ডকুমেন্ট স্ক্রিনশট (landing/GEMINI_PROMPTS.md দেখুন)
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>কেন LicenseKaro?</h2>
+    <p class="section-sub">একটা লাইসেন্স ভুলে গেলেই ₹৫০০ থেকে ₹২৫,০০০ পর্যন্ত জরিমানা। আর নয়।</p>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">🚦</div>
+        <h3>এক নজরে সব লাইসেন্স</h3>
+        <p>সবুজ = ঠিক আছে, হলুদ = মেয়াদ শেষ হচ্ছে, লাল = মেয়াদ শেষ। ট্রাফিক লাইটের মতো সহজ।</p>
+      </div>
+      <div class="card">
+        <div class="icon">🔔</div>
+        <h3>WhatsApp রিমাইন্ডার</h3>
+        <p>মেয়াদ শেষের ৯০, ৬০, ৩০, ৭ দিন আগে ফোনে আর WhatsApp-এ মনে করিয়ে দিই — ফ্রি।</p>
+      </div>
+      <div class="card">
+        <div class="icon">📁</div>
+        <h3>ডকুমেন্ট ভল্ট</h3>
+        <p>লাইসেন্সের ছবি আর PDF নিরাপদে রাখুন। দরকারে এক ট্যাপে WhatsApp-এ পাঠান।</p>
+      </div>
+      <div class="card">
+        <div class="icon">🤝</div>
+        <h3>"আমার হয়ে রিনিউ করুন"</h3>
+        <p>সময় নেই? আমরা সরকারি পোর্টালে আপনার হয়ে রিনিউ করে দিই — মাত্র ₹২৯৯ থেকে।</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="install">
+  <div class="wrap">
+    <h2>কীভাবে ইনস্টল করবেন</h2>
+    <p class="section-sub">অ্যাপটি এখন বেটা পর্যায়ে — Play Store-এ আসার আগে সরাসরি আমাদের থেকে নিন।</p>
+    <div class="steps">
+      <div class="step"><div class="num"></div><div>
+        <h4>APK ডাউনলোড করুন</h4>
+        <p>উপরের সবুজ বোতামে চাপ দিন — ফাইলটা (~৬০ MB) ডাউনলোড হবে।</p>
+      </div></div>
+      <div class="step"><div class="num"></div><div>
+        <h4>ফাইলটা খুলুন</h4>
+        <p>নোটিফিকেশন থেকে বা File Manager → Downloads থেকে LicenseKaro.apk-তে চাপ দিন।</p>
+      </div></div>
+      <div class="step"><div class="num"></div><div>
+        <h4>"Install anyway" বাছুন</h4>
+        <p>ফোন জিজ্ঞেস করবে "অজানা অ্যাপ ইনস্টল করবেন?" — Allow / Install anyway দিন। এটা স্বাভাবিক, নিচে দেখুন কেন।</p>
+      </div></div>
+      <div class="step"><div class="num"></div><div>
+        <h4>ফোন নম্বর দিয়ে লগইন করুন</h4>
+        <p>OTP আসবে, ব্যবসার ধরন আর জেলা বাছুন — ব্যস, লাইসেন্স যোগ করা শুরু করুন।</p>
+      </div></div>
+    </div>
+    <div class="note">
+      ⚠️ <strong>"Unknown source" সতর্কবার্তা কেন আসে?</strong> অ্যাপটা এখনো Play Store-এ ওঠেনি
+      (বেটা চলছে), তাই Android সাবধান করে। অ্যাপে কোনো ভাইরাস নেই — আপনার ডেটা শুধু আপনার
+      অ্যাকাউন্টে সুরক্ষিত থাকে। শীঘ্রই Play Store-এ আসছে।
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="service">
+  <div class="wrap">
+    <div class="service-box">
+      <h2>নিজে রিনিউ করার সময় নেই?</h2>
+      <div class="price">₹২৯৯ থেকে</div>
+      <p>
+        অ্যাপের "আমার হয়ে রিনিউ করুন" বোতামে চাপ দিন — WhatsApp-এ আমাদের সাথে কথা হবে।
+        আমরা সরকারি পোর্টালে আপনার রিনিউয়াল ফাইল করে দেব।<br />
+        <strong>কাজ শেষ হলে তবেই পেমেন্ট।</strong> সার্ভিস ফি + আসল সরকারি ফি — কোনো লুকানো খরচ নেই।
+      </p>
+      <!-- TODO(founder): replace with real WhatsApp Business number -->
+      <a class="btn" href="https://wa.me/919876543210?text=%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E0%A6%B0%E0%A6%BF%E0%A6%A8%E0%A6%BF%E0%A6%89%20%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AD%E0%A6%BF%E0%A6%B8%20%E0%A6%9A%E0%A6%BE%E0%A6%87">WhatsApp-এ জিজ্ঞেস করুন</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>কে বানিয়েছে?</h2>
+    <p class="section-sub">কোনো বড় কোম্পানি নয় — পশ্চিমবঙ্গের একজন মানুষ, ব্যবসায়ীদের সমস্যা থেকে।</p>
+    <div class="founder">
+      <!-- IMAGE SLOT: founder.jpg — real photo, square, ≥400×400. A real face = the trust signal. -->
+      <div class="img-placeholder">founder.jpg</div>
+      <div>
+        <!-- TODO(founder): real name + district -->
+        <h3>গৌরব হাজরা</h3>
+        <p>
+          পশ্চিমবঙ্গের ছেলে। দেখেছি কীভাবে ছোট ব্যবসায়ীরা একটা তারিখ ভুলে হাজার হাজার টাকা
+          জরিমানা দেন। তাই LicenseKaro — যাতে আর কেউ না দেন। সরাসরি আমাকে WhatsApp করুন,
+          আমিই উত্তর দিই।
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="privacy">
+  <div class="wrap privacy">
+    <h2>গোপনীয়তা নীতি (Privacy Policy)</h2>
+    <h3>আমরা কী তথ্য নিই</h3>
+    <ul>
+      <li>ফোন নম্বর (লগইনের জন্য), নাম, ব্যবসার নাম, ব্যবসার ধরন, জেলা</li>
+      <li>আপনি নিজে যোগ করা লাইসেন্সের তথ্য ও ডকুমেন্ট</li>
+      <li>অ্যাপ ব্যবহারের বেনামি পরিসংখ্যান (কোন স্ক্রিন কতবার খোলা হয়) — অ্যাপ ভালো করার জন্য</li>
+    </ul>
+    <h3>আপনার তথ্য কোথায় থাকে</h3>
+    <ul>
+      <li>এনক্রিপ্টেড ক্লাউড ডেটাবেসে (Supabase), শুধু আপনার অ্যাকাউন্ট থেকেই দেখা যায়</li>
+      <li>আমরা আপনার তথ্য <strong>কখনো বিক্রি করি না</strong>, কোনো বিজ্ঞাপন কোম্পানিকে দিই না</li>
+      <li>রিনিউ সার্ভিস নিলে ডকুমেন্ট শুধু ফাইলিংয়ের কাজেই ব্যবহার হয়</li>
+    </ul>
+    <h3>মুছে ফেলা</h3>
+    <ul>
+      <li>Settings → "অ্যাকাউন্ট মুছুন" — সব তথ্য সাথে সাথে স্থায়ীভাবে মুছে যায়</li>
+      <li>যেকোনো প্রশ্নে WhatsApp করুন — ২৪ ঘণ্টার মধ্যে উত্তর</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    LicenseKaro © 2026 · পশ্চিমবঙ্গের ব্যবসায়ীদের জন্য ❤️ দিয়ে বানানো ·
+    <!-- TODO(founder): replace with real WhatsApp Business number -->
+    <a href="https://wa.me/919876543210">যোগাযোগ</a> · <a href="#privacy">গোপনীয়তা নীতি</a>
+  </div>
+</footer>
+
+</body>
+</html>
